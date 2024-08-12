@@ -10,13 +10,17 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('guardians', function (Blueprint $table) {
+        Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
             $table->date('birthdate')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('level_id')->default(1); // Set default value here
+            $table->foreign('level_id')->references('id')->on('levels');
+            //$table->unsignedBigInteger('parent_id');
+            //$table->foreign('parent_id')->references('id')->on('guardians');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -27,6 +31,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('guardians');
+        Schema::dropIfExists('students');
     }
 };

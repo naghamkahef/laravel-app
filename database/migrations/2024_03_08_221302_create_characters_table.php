@@ -13,10 +13,25 @@ return new class extends Migration {
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('level_id');
-            $table->foreign('level_id')->references('id')->on('levels');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->string('character');
+            $table->string('Char_first');
+            $table->string('word_first');
+            $table->string('image_first');
+            $table->string('canvas_first');
+            $table->string('Char_middle');
+            $table->string('word_middle');
+            $table->string('image_middle');
+            $table->string('canvas_middle');
+            $table->string('Char_last');
+            $table->string('word_last');
+            $table->string('image_last');
+            $table->string('canvas_last');
+            $table->string('sound_first')->nullable();
+            $table->string('sound_middle')->nullable();
+            $table->string('sound_last')->nullable();
+            $table->string('sound_test1')->nullable();
+            $table->string('sound_test2')->nullable();
+            
             $table->softDeletes();
             $table->timestamps();
         });

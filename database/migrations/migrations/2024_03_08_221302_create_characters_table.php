@@ -10,11 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('tests', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('character_id')->constrained('characters','id');
-            $table->string('word');
-            $table->string('image');
+        Schema::create('characters', function (Blueprint $table) {
+            $table->string('name')->primary();
+            $table->unsignedBigInteger('level_id');
+            $table->foreign('level_id')->references('id')->on('levels');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -25,6 +26,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('tests');
+        Schema::dropIfExists('characters');
     }
 };

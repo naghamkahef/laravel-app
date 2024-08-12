@@ -12,9 +12,14 @@ return new class extends Migration {
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('character_id')->constrained('characters','id');
-            $table->string('word');
-            $table->string('image');
+            // $table->unsignedBigInteger('game_type_id');
+            // $table->foreign('game_type_id')->references('id')->on('game_types');
+            $table->string('character_name');
+            $table->foreign('character_name')->references('name')->on('characters');
+            $table->unsignedBigInteger('level_id');
+            $table->foreign('level_id')->references('id')->on('levels');
+            $table->text('description');
+            $table->float('total_score')->nullable(); // Computed Field 
             $table->softDeletes();
             $table->timestamps();
         });

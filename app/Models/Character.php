@@ -16,9 +16,19 @@ class Character extends Model
 
     protected $fillable = [
         'name',
-        'pronunciation',
-        'level_id',
-        'category_id',
+        'character',
+        'Char_first',
+        'word_first',
+        'image_first',
+        'canvas_first',
+        'Char_middle',
+        'word_middle',
+        'image_middle',
+        'canvas_middle',
+        'Char_last',
+        'word_last',
+        'image_last',
+        'canvas_last'
     ];
 
     protected $hidden = [
@@ -37,9 +47,9 @@ class Character extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function tests()
+    public function test()
     {
-        return $this->hasMany(Test::class);
+        return $this->hasOne(Test::class);
     }
 
     public function shapes()

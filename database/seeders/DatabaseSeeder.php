@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Database\Seeders\WordsTableSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -14,10 +15,13 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            CategorySeeder::class,
-            LevelSeeder::class,
+            
             CharacterSeeder::class,
-            WordsSeeder::class
+            PrepositionSeeder::class,
+            PrepositionTestSeeder::class,
+            TestSeeder::class,
+            SoundSeedrer::class,
+            
         ]);
     }
   }

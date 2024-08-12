@@ -19,11 +19,12 @@ class StudentAccountChangingController extends Controller
          return response()->json(['error' => $validator->errors()], 422);
      }
  
-     $student = auth()->guard('student-api')->user();
+     $student_id = auth()->guard('student-api')->user()->id;
  
-     if (!$student) {
+     if (!$student_id) {
          return response()->json(['error' => 'Unauthorized'], 401);
      }
+     $student = Student::find($student_id);
  
      $student->full_name = $request->input('full_name');
      $student->save();
@@ -37,7 +38,7 @@ class StudentAccountChangingController extends Controller
 {
     $validator = Validator::make($request->all(), [
         'old_password' => 'required|string',
-        'password' => 'required|string|min:8|confirmed',
+        'password' => 'required|string|min:8',
     ]);
 
     if ($validator->fails()) {

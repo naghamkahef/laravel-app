@@ -127,5 +127,7 @@ return [
     */
 
     'password_timeout' => 10800,
+    'verify_emails' => true,
+    'verification_link_expires_at' => 60 * 60 * 24, // One day
 
 ];

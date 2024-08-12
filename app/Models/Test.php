@@ -15,11 +15,9 @@ class Test extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'description',
-        'total_score',
-        // 'game_type_id',
         'character_id',
-        'level_id',
+        'word',
+        'image'
     ];
 
     protected $hidden = [

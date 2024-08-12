@@ -10,11 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('tests', function (Blueprint $table) {
+        Schema::create('shapes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('character_id')->constrained('characters','id');
-            $table->string('word');
             $table->string('image');
+            $table->string('character_name');
+            $table->foreign('character_name')->references('name')->on('characters');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -25,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('tests');
+        Schema::dropIfExists('shapes');
     }
 };

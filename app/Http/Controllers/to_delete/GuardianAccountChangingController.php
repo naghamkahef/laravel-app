@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\to_delete;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Guardian;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class GuardianAccountChangingController extends Controller
 {
@@ -44,6 +45,7 @@ class GuardianAccountChangingController extends Controller
     if ($validator->fails()) {
         return response()->json(['error' => $validator->errors()], 422);
     }
+    
 
     $student = auth()->guard('guardian-api')->user();
 
